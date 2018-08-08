@@ -39,6 +39,7 @@ public class MiniDroneActivity extends AppCompatActivity {
     private Button mpuppy;
     private Button mgamble;
     private Button mSpiral;
+    private Button circling_in_the_90s;
 
     private int mNbMaxDownload;
     private int mCurrentDownloadIndex;
@@ -234,7 +235,6 @@ public class MiniDroneActivity extends AppCompatActivity {
                     mMiniDrone.takeOff();
 
 
-
                         mMiniDrone.setPitch((byte) 50);
                         mMiniDrone.setFlag((byte) 1);
                         Thread.sleep(2000);
@@ -269,6 +269,26 @@ public class MiniDroneActivity extends AppCompatActivity {
                     mMiniDrone.setPitch((byte) 30);
                     mMiniDrone.setFlag((byte) 1);
                     Thread.sleep(rand.nextInt(5500) + 500);
+                    mMiniDrone.land();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        circling_in_the_90s = (Button) findViewById(R.id.circling_in_the_90s);
+        circling_in_the_90s.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    mMiniDrone.setFlag((byte) 0 );
+                    mMiniDrone.takeOff();
+
+                    mMiniDrone.setPitch((byte) 30);
+                    mMiniDrone.setFlag((byte) 1);
+                    mMiniDrone.setYaw((byte) 30);
+                    mMiniDrone.setGaz((byte) 50);
+                    Thread.sleep(2000);
                     mMiniDrone.land();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
