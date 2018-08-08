@@ -23,8 +23,6 @@ import com.parrot.sdksample.view.H264VideoView;
 
 import java.util.Random;
 
-import java.util.Random;
-
 public class MiniDroneActivity extends AppCompatActivity {
     private static final String TAG = "MiniDroneActivity";
     private MiniDrone mMiniDrone;
@@ -41,6 +39,7 @@ public class MiniDroneActivity extends AppCompatActivity {
     private Button mBowtie;
     private Button mpuppy;
     private Button mgamble;
+    private Button mSpiral;
 
     private int mNbMaxDownload;
     private int mCurrentDownloadIndex;
@@ -190,6 +189,32 @@ public class MiniDroneActivity extends AppCompatActivity {
             }
         });
 
+        mSpiral = (Button) findViewById(R.id.Spiral);
+        mSpiral.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    mMiniDrone.setFlag((byte)0);
+                    mMiniDrone.takeOff();
+                    Thread.sleep(1000) ;
+                    mMiniDrone.setGaz((byte) 100);
+                    mMiniDrone.setYaw((byte) 100);
+                    Thread.sleep(3000);
+                    mMiniDrone.setGaz((byte) 0);
+                    mMiniDrone.setYaw((byte) 0);
+                    mMiniDrone.setPitch((byte) 50);
+                    Thread.sleep( 2000);
+                    mMiniDrone.setGaz((byte) -100);
+                    mMiniDrone.setYaw((byte) -100);
+                    mMiniDrone.setPitch((byte) 0);
+                    Thread.sleep( 3000);
+                    mMiniDrone.land();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
         mpuppy = (Button) findViewById(R.id.puppy);
         mpuppy.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -225,7 +250,7 @@ public class MiniDroneActivity extends AppCompatActivity {
                 try {
                     mMiniDrone.takeOff();
 
-                    Random rand = new Random(1);
+                    Random rand = new Random();
 
                     mMiniDrone.setPitch((byte) 30);
                     mMiniDrone.setFlag((byte) 1);
