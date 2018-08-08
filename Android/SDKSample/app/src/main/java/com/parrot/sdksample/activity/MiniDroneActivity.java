@@ -34,6 +34,7 @@ public class MiniDroneActivity extends AppCompatActivity {
     private Button mTakeOffLandBt;
     private Button mDownloadBt;
     private Button mAnglieinc;
+    private Button mBowtie;
 
     private int mNbMaxDownload;
     private int mCurrentDownloadIndex;
@@ -142,6 +143,40 @@ public class MiniDroneActivity extends AppCompatActivity {
                     }
                     mMiniDrone.setGaz((byte) 0);
                     Thread.sleep(500);
+                    mMiniDrone.land();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        mBowtie = (Button) findViewById(R.id.Bowtie);
+        mBowtie.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    mMiniDrone.takeOff();
+                    Thread.sleep(1000) ;
+                    mMiniDrone.setGaz((byte) 50);
+                    Thread.sleep(1000);
+                    mMiniDrone.setGaz((byte) 0);
+                    Thread.sleep(1000);
+                    mMiniDrone.setPitch((byte) 50);
+                    mMiniDrone.setFlag((byte) 1);
+                    mMiniDrone.setGaz((byte) -30);
+                    Thread.sleep(2000);
+                    mMiniDrone.setPitch((byte) 0);
+                    mMiniDrone.setFlag((byte) 1);
+                    mMiniDrone.setGaz((byte) 30);
+                    Thread.sleep(2000);
+                    mMiniDrone.setPitch((byte) -50);
+                    mMiniDrone.setFlag((byte) 1);
+                    mMiniDrone.setGaz((byte) -30);
+                    Thread.sleep(2000);
+                    mMiniDrone.setGaz((byte) 0);
+                    mMiniDrone.setPitch((byte) 0);
+                    mMiniDrone.setFlag((byte) 1);
+                    Thread.sleep(1000);
                     mMiniDrone.land();
                 } catch (InterruptedException e) {
                     e.printStackTrace();

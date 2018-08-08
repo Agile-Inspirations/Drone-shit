@@ -122,6 +122,13 @@
         android:layout_above="@+id/takeOffOrLandBt"
         android:width="150dp"/>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bowtie."
+        android:id="@+id/Bowtie"
+        android:layout_above="@+id/takeOffOrLandBt"
+        android:width="150dp"/>
 
     <Button
         android:layout_width="wrap_content"
