@@ -120,6 +120,9 @@ public class MiniDroneActivity extends AppCompatActivity {
             public void onClick(View view) {
                 try {
                     time = 500;
+
+                    mMiniDrone.setFlag((byte) 0 );
+
                     mMiniDrone.takeOff();
 
                     Thread.sleep(500);
@@ -160,6 +163,8 @@ public class MiniDroneActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try {
+                    mMiniDrone.setFlag((byte) 0 );
+
                     mMiniDrone.takeOff();
                     Thread.sleep(1000) ;
                     mMiniDrone.setGaz((byte) 50);
@@ -194,14 +199,19 @@ public class MiniDroneActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try {
+                    mMiniDrone.setFlag((byte) 0 );
+
                     time = 500;
                     mMiniDrone.takeOff();
+
+
 
                         mMiniDrone.setPitch((byte) 50);
                         mMiniDrone.setFlag((byte) 1);
                         Thread.sleep(2000);
                         mMiniDrone.setPitch((byte) 0);
                         mMiniDrone.setFlag((byte) 1);
+                        Thread.sleep(500);
                         mMiniDrone.setGaz((byte) 50);
                         Thread.sleep(500);
                         mMiniDrone.setYaw((byte) 100);
@@ -222,13 +232,14 @@ public class MiniDroneActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try {
+                    mMiniDrone.setFlag((byte) 0 );
                     mMiniDrone.takeOff();
 
                     Random rand = new Random();
 
                     mMiniDrone.setPitch((byte) 30);
                     mMiniDrone.setFlag((byte) 1);
-                    Thread.sleep(rand.nextInt(2500) + 500);
+                    Thread.sleep(rand.nextInt(5500) + 500);
                     mMiniDrone.land();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
