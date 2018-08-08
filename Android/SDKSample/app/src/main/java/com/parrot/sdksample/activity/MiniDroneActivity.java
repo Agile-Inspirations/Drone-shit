@@ -21,6 +21,10 @@ import com.parrot.sdksample.R;
 import com.parrot.sdksample.drone.MiniDrone;
 import com.parrot.sdksample.view.H264VideoView;
 
+import java.util.Random;
+
+import java.util.Random;
+
 public class MiniDroneActivity extends AppCompatActivity {
     private static final String TAG = "MiniDroneActivity";
     private MiniDrone mMiniDrone;
@@ -35,6 +39,8 @@ public class MiniDroneActivity extends AppCompatActivity {
     private Button mDownloadBt;
     private Button mAnglieinc;
     private Button mBowtie;
+    private Button mpuppy;
+    private Button mgamble;
 
     private int mNbMaxDownload;
     private int mCurrentDownloadIndex;
@@ -119,27 +125,27 @@ public class MiniDroneActivity extends AppCompatActivity {
 
                     Thread.sleep(500);
                     for(int t=0;t<3; t++) {
-                       ;
+
                         mMiniDrone.setPitch((byte) 50);
                         mMiniDrone.setFlag((byte) 1);
                         Thread.sleep(1000);
                         mMiniDrone.setPitch((byte) 0);
                         mMiniDrone.setFlag((byte) 1);
-                        Thread.sleep(500);
+                        Thread.sleep(time);
                         mMiniDrone.setGaz((byte) 0);
-                        Thread.sleep(500);
+                        Thread.sleep(time);
                         mMiniDrone.setGaz((byte) -50);
-                        Thread.sleep(500);
+                        Thread.sleep(time);
                         mMiniDrone.setGaz((byte) 0);
-                        Thread.sleep(500);
+                        Thread.sleep(time);
                         mMiniDrone.setPitch((byte) 50);
                         mMiniDrone.setFlag((byte) 1);
                         Thread.sleep(1000);
                         mMiniDrone.setPitch((byte) 0);
                         mMiniDrone.setFlag((byte) 1);
-                        Thread.sleep(500);
+                        Thread.sleep(time);
                         mMiniDrone.setGaz((byte) 50);
-                        Thread.sleep(500);
+                        Thread.sleep(time);
                     }
                     mMiniDrone.setGaz((byte) 0);
                     Thread.sleep(500);
@@ -184,6 +190,53 @@ public class MiniDroneActivity extends AppCompatActivity {
             }
         });
 
+        mpuppy = (Button) findViewById(R.id.puppy);
+        mpuppy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    time = 500;
+                    mMiniDrone.takeOff();
+
+                        mMiniDrone.setPitch((byte) 50);
+                        mMiniDrone.setFlag((byte) 1);
+                        Thread.sleep(2000);
+                        mMiniDrone.setPitch((byte) 0);
+                        mMiniDrone.setFlag((byte) 1);
+                        mMiniDrone.setGaz((byte) 50);
+                        Thread.sleep(500);
+                        mMiniDrone.setYaw((byte) 100);
+                        mMiniDrone.setGaz((byte) -50);
+                        Thread.sleep(400);
+                        mMiniDrone.land();
+                    mMiniDrone.setGaz((byte) 0);
+                    Thread.sleep(500);
+                    mMiniDrone.land();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        mgamble = (Button) findViewById(R.id.gamble);
+        mgamble.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    mMiniDrone.takeOff();
+
+                    Random rand = new Random(1);
+
+                    mMiniDrone.setPitch((byte) 30);
+                    mMiniDrone.setFlag((byte) 1);
+                    Thread.sleep(rand.nextInt(2500) + 500);
+                    mMiniDrone.land();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
         mTakeOffLandBt = (Button) findViewById(R.id.takeOffOrLandBt);
         mTakeOffLandBt.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -203,26 +256,6 @@ public class MiniDroneActivity extends AppCompatActivity {
         findViewById(R.id.takePictureBt).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 mMiniDrone.takePicture();
-            }
-        });
-
-        mDownloadBt = (Button)findViewById(R.id.downloadBt);
-        mDownloadBt.setEnabled(false);
-        mDownloadBt.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                mMiniDrone.getLastFlightMedias();
-
-                mDownloadProgressDialog = new ProgressDialog(MiniDroneActivity.this, R.style.AppCompatAlertDialogStyle);
-                mDownloadProgressDialog.setIndeterminate(true);
-                mDownloadProgressDialog.setMessage("Fetching medias");
-                mDownloadProgressDialog.setCancelable(false);
-                mDownloadProgressDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        mMiniDrone.cancelGetLastFlightMedias();
-                    }
-                });
-                mDownloadProgressDialog.show();
             }
         });
 
