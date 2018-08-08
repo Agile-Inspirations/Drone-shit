@@ -34,7 +34,6 @@ public class MiniDroneActivity extends AppCompatActivity {
 
     private TextView mBatteryLabel;
     private Button mTakeOffLandBt;
-    private Button mDownloadBt;
     private Button mAnglieinc;
     private Button mBowtie;
     private Button mpuppy;
@@ -120,6 +119,9 @@ public class MiniDroneActivity extends AppCompatActivity {
             public void onClick(View view) {
                 try {
                     time = 500;
+
+                    mMiniDrone.setFlag((byte) 0 );
+
                     mMiniDrone.takeOff();
 
                     Thread.sleep(500);
@@ -160,6 +162,8 @@ public class MiniDroneActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try {
+                    mMiniDrone.setFlag((byte) 0 );
+
                     mMiniDrone.takeOff();
                     Thread.sleep(1000) ;
                     mMiniDrone.setGaz((byte) 50);
@@ -220,14 +224,19 @@ public class MiniDroneActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try {
+                    mMiniDrone.setFlag((byte) 0 );
+
                     time = 500;
                     mMiniDrone.takeOff();
+
+
 
                         mMiniDrone.setPitch((byte) 50);
                         mMiniDrone.setFlag((byte) 1);
                         Thread.sleep(2000);
                         mMiniDrone.setPitch((byte) 0);
                         mMiniDrone.setFlag((byte) 1);
+                        Thread.sleep(500);
                         mMiniDrone.setGaz((byte) 50);
                         Thread.sleep(500);
                         mMiniDrone.setYaw((byte) 100);
@@ -248,13 +257,14 @@ public class MiniDroneActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try {
+                    mMiniDrone.setFlag((byte) 0 );
                     mMiniDrone.takeOff();
 
                     Random rand = new Random();
 
                     mMiniDrone.setPitch((byte) 30);
                     mMiniDrone.setFlag((byte) 1);
-                    Thread.sleep(rand.nextInt(2500) + 500);
+                    Thread.sleep(rand.nextInt(5500) + 500);
                     mMiniDrone.land();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -284,197 +294,7 @@ public class MiniDroneActivity extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.gazUpBt).setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                switch (event.getAction()) {
-                    case MotionEvent.ACTION_DOWN:
-                        v.setPressed(true);
-                        mMiniDrone.setGaz((byte) 50);
-                        break;
 
-                    case MotionEvent.ACTION_UP:
-                        v.setPressed(false);
-                        mMiniDrone.setGaz((byte) 0);
-                        break;
-
-                    default:
-
-                        break;
-                }
-
-                return true;
-            }
-        });
-
-        findViewById(R.id.gazDownBt).setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                switch (event.getAction()) {
-                    case MotionEvent.ACTION_DOWN:
-                        v.setPressed(true);
-                        mMiniDrone.setGaz((byte) -50);
-                        break;
-
-                    case MotionEvent.ACTION_UP:
-                        v.setPressed(false);
-                        mMiniDrone.setGaz((byte) 0);
-                        break;
-
-                    default:
-
-                        break;
-                }
-
-                return true;
-            }
-        });
-
-        findViewById(R.id.yawLeftBt).setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                switch (event.getAction()) {
-                    case MotionEvent.ACTION_DOWN:
-                        v.setPressed(true);
-                        mMiniDrone.setYaw((byte) -50);
-                        break;
-
-                    case MotionEvent.ACTION_UP:
-                        v.setPressed(false);
-                        mMiniDrone.setYaw((byte) 0);
-                        break;
-
-                    default:
-
-                        break;
-                }
-
-                return true;
-            }
-        });
-
-        findViewById(R.id.yawRightBt).setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                switch (event.getAction()) {
-                    case MotionEvent.ACTION_DOWN:
-                        v.setPressed(true);
-                        mMiniDrone.setYaw((byte) 50);
-                        break;
-
-                    case MotionEvent.ACTION_UP:
-                        v.setPressed(false);
-                        mMiniDrone.setYaw((byte) 0);
-                        break;
-
-                    default:
-
-                        break;
-                }
-
-                return true;
-            }
-        });
-
-        findViewById(R.id.forwardBt).setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                switch (event.getAction()) {
-                    case MotionEvent.ACTION_DOWN:
-                        v.setPressed(true);
-                        mMiniDrone.setPitch((byte) 50);
-                        mMiniDrone.setFlag((byte) 1);
-                        break;
-
-                    case MotionEvent.ACTION_UP:
-                        v.setPressed(false);
-                        mMiniDrone.setPitch((byte) 0);
-                        mMiniDrone.setFlag((byte) 0);
-                        break;
-
-                    default:
-
-                        break;
-                }
-
-                return true;
-            }
-        });
-
-        findViewById(R.id.backBt).setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                switch (event.getAction()) {
-                    case MotionEvent.ACTION_DOWN:
-                        v.setPressed(true);
-                        mMiniDrone.setPitch((byte) -50);
-                        mMiniDrone.setFlag((byte) 1);
-                        break;
-
-                    case MotionEvent.ACTION_UP:
-                        v.setPressed(false);
-                        mMiniDrone.setPitch((byte) 0);
-                        mMiniDrone.setFlag((byte) 0);
-                        break;
-
-                    default:
-
-                        break;
-                }
-
-                return true;
-            }
-        });
-
-        findViewById(R.id.rollLeftBt).setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                switch (event.getAction()) {
-                    case MotionEvent.ACTION_DOWN:
-                        v.setPressed(true);
-                        mMiniDrone.setRoll((byte) -50);
-                        mMiniDrone.setFlag((byte) 1);
-                        break;
-
-                    case MotionEvent.ACTION_UP:
-                        v.setPressed(false);
-                        mMiniDrone.setRoll((byte) 0);
-                        mMiniDrone.setFlag((byte) 0);
-                        break;
-
-                    default:
-
-                        break;
-                }
-
-                return true;
-            }
-        });
-
-        findViewById(R.id.rollRightBt).setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                switch (event.getAction()) {
-                    case MotionEvent.ACTION_DOWN:
-                        v.setPressed(true);
-                        mMiniDrone.setRoll((byte) 50);
-                        mMiniDrone.setFlag((byte) 1);
-                        break;
-
-                    case MotionEvent.ACTION_UP:
-                        v.setPressed(false);
-                        mMiniDrone.setRoll((byte) 0);
-                        mMiniDrone.setFlag((byte) 0);
-                        break;
-
-                    default:
-
-                        break;
-                }
-
-                return true;
-            }
-        });
 
         mBatteryLabel = (TextView) findViewById(R.id.batteryLabel);
     }
@@ -510,17 +330,14 @@ public class MiniDroneActivity extends AppCompatActivity {
                 case ARCOMMANDS_MINIDRONE_PILOTINGSTATE_FLYINGSTATECHANGED_STATE_LANDED:
                     mTakeOffLandBt.setText("Take off");
                     mTakeOffLandBt.setEnabled(true);
-                    mDownloadBt.setEnabled(true);
                     break;
                 case ARCOMMANDS_MINIDRONE_PILOTINGSTATE_FLYINGSTATECHANGED_STATE_FLYING:
                 case ARCOMMANDS_MINIDRONE_PILOTINGSTATE_FLYINGSTATECHANGED_STATE_HOVERING:
                     mTakeOffLandBt.setText("Land");
                     mTakeOffLandBt.setEnabled(true);
-                    mDownloadBt.setEnabled(false);
                     break;
                 default:
                     mTakeOffLandBt.setEnabled(false);
-                    mDownloadBt.setEnabled(false);
             }
         }
 
