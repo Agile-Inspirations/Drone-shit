@@ -117,6 +117,15 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Aglie Inc."
+        android:id="@+id/Aglieinc"
+        android:layout_above="@+id/takeOffOrLandBt"
+        android:width="150dp"/>
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Download"
         android:id="@+id/downloadBt"
         android:layout_alignParentBottom="true"

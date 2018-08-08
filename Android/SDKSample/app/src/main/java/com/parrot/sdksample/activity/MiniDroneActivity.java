@@ -33,9 +33,12 @@ public class MiniDroneActivity extends AppCompatActivity {
     private TextView mBatteryLabel;
     private Button mTakeOffLandBt;
     private Button mDownloadBt;
+    private Button mAnglieinc;
 
     private int mNbMaxDownload;
     private int mCurrentDownloadIndex;
+
+    public int time;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,6 +105,47 @@ public class MiniDroneActivity extends AppCompatActivity {
         findViewById(R.id.emergencyBt).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 mMiniDrone.emergency();
+            }
+        });
+
+        mAnglieinc = (Button) findViewById(R.id.Aglieinc);
+        mAnglieinc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    time = 500;
+                    mMiniDrone.takeOff();
+
+                    Thread.sleep(500);
+                    for(int t=0;t<3; t++) {
+                       ;
+                        mMiniDrone.setPitch((byte) 50);
+                        mMiniDrone.setFlag((byte) 1);
+                        Thread.sleep(1000);
+                        mMiniDrone.setPitch((byte) 0);
+                        mMiniDrone.setFlag((byte) 1);
+                        Thread.sleep(500);
+                        mMiniDrone.setGaz((byte) 0);
+                        Thread.sleep(500);
+                        mMiniDrone.setGaz((byte) -50);
+                        Thread.sleep(500);
+                        mMiniDrone.setGaz((byte) 0);
+                        Thread.sleep(500);
+                        mMiniDrone.setPitch((byte) 50);
+                        mMiniDrone.setFlag((byte) 1);
+                        Thread.sleep(1000);
+                        mMiniDrone.setPitch((byte) 0);
+                        mMiniDrone.setFlag((byte) 1);
+                        Thread.sleep(500);
+                        mMiniDrone.setGaz((byte) 50);
+                        Thread.sleep(500);
+                    }
+                    mMiniDrone.setGaz((byte) 0);
+                    Thread.sleep(500);
+                    mMiniDrone.land();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
