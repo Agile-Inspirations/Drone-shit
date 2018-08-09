@@ -280,13 +280,15 @@ public class MiniDroneActivity extends AppCompatActivity {
                     mMiniDrone.setFlag((byte) 0 );
                     mMiniDrone.takeOff();
 
-                    mMiniDrone.setPitch((byte) 30);
+                    mMiniDrone.setPitch((byte) 40);
                     mMiniDrone.setFlag((byte) 1);
-                    mMiniDrone.setYaw((byte) 100);
+                    mMiniDrone.setYaw((byte) 50);
                     mMiniDrone.setGaz((byte) 20);
-                    Thread.sleep(1500);
+                    Thread.sleep(1000);
+
                     mMiniDrone.setFlag((byte) 0 );
                     mMiniDrone.land();
+
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
