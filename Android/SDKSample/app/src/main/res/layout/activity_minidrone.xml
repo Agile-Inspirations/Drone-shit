@@ -8,14 +8,17 @@
     <com.parrot.sdksample.view.H264VideoView
         android:id="@+id/videoView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+
+        android:layout_alignParentTop="true" />
 
     <Button
         android:id="@+id/emergencyBt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
+        android:layout_marginTop="17dp"
         android:width="150dp"
         android:text="Emergency" />
 
@@ -23,53 +26,47 @@
         android:id="@+id/puppy"
         android:layout_width="113dp"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/takeOffOrLandBt"
-        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="184dp"
         android:width="150dp"
         android:text="puppy" />
 
     <Button
+
         android:id="@+id/insanity"
         android:layout_width="113dp"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/circling_in_the_90s"
+        android:layout_above="@+id/hit90s"
         android:layout_centerHorizontal="true"
         android:width="150dp"
         android:text="insanity" />
 
 
     <Button
-        android:id="@+id/circling_in_the_90s"
-        android:layout_width="113dp"
+        android:id="@+id/hit90s"
+        android:layout_width="108dp"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/takeOffOrLandBt"
-        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="126dp"
         android:width="150dp"
-        android:text="@+id/circling_in_the_90s" />
+        android:text="hit90s" />
 
     <Button
         android:id="@+id/gamble"
         android:layout_width="113dp"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/Aglieinc"
-        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/hit90s"
+        android:layout_marginTop="-126dp"
         android:width="150dp"
         android:text="gamble" />
 
     <Button
-        android:id="@+id/takePictureBt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:width="150dp"
-        android:text="Take picture" />
-
-    <Button
         android:id="@+id/takeOffOrLandBt"
-        android:layout_width="wrap_content"
+        android:layout_width="251dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="21dp"
         android:width="150dp" />
 
 
@@ -77,23 +74,27 @@
         android:id="@+id/Aglieinc"
         android:layout_width="99dp"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/takeOffOrLandBt"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="213dp"
         android:width="150dp"
         android:text="Aglie inc." />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Bowtie."
         android:id="@+id/Bowtie"
-        android:layout_above="@+id/takeOffOrLandBt"
-        android:width="150dp"/>
+        android:layout_width="121dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/hit90s"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="-126dp"
+        android:width="150dp"
+        android:text="Bowtie." />
 
     <Button
         android:id="@+id/Spiral"
         android:layout_width="99dp"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/takeOffOrLandBt"
+        android:layout_above="@+id/Aglieinc"
+        android:layout_marginBottom="-213dp"
         android:width="150dp"
         android:text="Spiral" />
 

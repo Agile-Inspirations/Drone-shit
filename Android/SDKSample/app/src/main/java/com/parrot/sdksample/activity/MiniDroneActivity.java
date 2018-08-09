@@ -39,8 +39,8 @@ public class MiniDroneActivity extends AppCompatActivity {
     private Button mpuppy;
     private Button mgamble;
     private Button mSpiral;
-    private Button circling_in_the_90s;
     private Button insanity;
+    private Button hit90s;
 
     private int mNbMaxDownload;
     private int mCurrentDownloadIndex;
@@ -203,17 +203,21 @@ public class MiniDroneActivity extends AppCompatActivity {
                     mMiniDrone.setFlag((byte)0);
                     mMiniDrone.takeOff();
                     Thread.sleep(1000) ;
-                    mMiniDrone.setGaz((byte) 100);
+                    mMiniDrone.setGaz((byte) 50);
                     mMiniDrone.setYaw((byte) 100);
-                    Thread.sleep(3000);
+                    Thread.sleep(2500);
                     mMiniDrone.setGaz((byte) 0);
                     mMiniDrone.setYaw((byte) 0);
+                    Thread.sleep(500);
                     mMiniDrone.setPitch((byte) 50);
+                    mMiniDrone.setFlag((byte) 1);
                     Thread.sleep( 2000);
-                    mMiniDrone.setGaz((byte) -100);
-                    mMiniDrone.setYaw((byte) -100);
                     mMiniDrone.setPitch((byte) 0);
-                    Thread.sleep( 3000);
+                    mMiniDrone.setFlag((byte) 1);
+                    Thread.sleep(500);
+                    mMiniDrone.setGaz((byte) -50);
+                    mMiniDrone.setYaw((byte) -100);
+                    Thread.sleep( 2500);
                     mMiniDrone.land();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -273,6 +277,7 @@ public class MiniDroneActivity extends AppCompatActivity {
             }
         });
 
+
         insanity = (Button) findViewById(R.id.insanity);
         insanity.setOnClickListener(new View.OnClickListener() {
                                        @Override
@@ -319,21 +324,23 @@ public class MiniDroneActivity extends AppCompatActivity {
                                            }
                                        }
                                    });
-
-        circling_in_the_90s = (Button) findViewById(R.id.circling_in_the_90s);
-        circling_in_the_90s.setOnClickListener(new View.OnClickListener() {
+        hit90s = (Button) findViewById(R.id.hit90s);
+        hit90s.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 try {
                     mMiniDrone.setFlag((byte) 0 );
                     mMiniDrone.takeOff();
 
-                    mMiniDrone.setPitch((byte) 30);
+                    mMiniDrone.setPitch((byte) 40);
                     mMiniDrone.setFlag((byte) 1);
-                    mMiniDrone.setYaw((byte) 30);
-                    mMiniDrone.setGaz((byte) 50);
-                    Thread.sleep(2000);
+                    mMiniDrone.setYaw((byte) 50);
+                    mMiniDrone.setGaz((byte) 20);
+                    Thread.sleep(1000);
+
+                    mMiniDrone.setFlag((byte) 0 );
                     mMiniDrone.land();
+
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -353,12 +360,6 @@ public class MiniDroneActivity extends AppCompatActivity {
                         break;
                     default:
                 }
-            }
-        });
-
-        findViewById(R.id.takePictureBt).setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                mMiniDrone.takePicture();
             }
         });
 
