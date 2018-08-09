@@ -39,7 +39,7 @@ public class MiniDroneActivity extends AppCompatActivity {
     private Button mpuppy;
     private Button mgamble;
     private Button mSpiral;
-    private Button helixing_in_the_90s;
+    private Button hit90s;
 
     private int mNbMaxDownload;
     private int mCurrentDownloadIndex;
@@ -276,8 +276,8 @@ public class MiniDroneActivity extends AppCompatActivity {
             }
         });
 
-        helixing_in_the_90s = (Button) findViewById(R.id.helixing_in_the_90s);
-        helixing_in_the_90s.setOnClickListener(new View.OnClickListener() {
+        hit90s = (Button) findViewById(R.id.hit90s);
+        hit90s.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 try {
