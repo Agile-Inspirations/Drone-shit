@@ -29,6 +29,16 @@
         android:text="puppy" />
 
     <Button
+        android:id="@+id/insanity"
+        android:layout_width="113dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/circling_in_the_90s"
+        android:layout_centerHorizontal="true"
+        android:width="150dp"
+        android:text="insanity" />
+
+
+    <Button
         android:id="@+id/circling_in_the_90s"
         android:layout_width="113dp"
         android:layout_height="wrap_content"

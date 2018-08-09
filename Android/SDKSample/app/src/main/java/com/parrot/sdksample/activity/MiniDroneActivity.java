@@ -40,6 +40,7 @@ public class MiniDroneActivity extends AppCompatActivity {
     private Button mgamble;
     private Button mSpiral;
     private Button circling_in_the_90s;
+    private Button insanity;
 
     private int mNbMaxDownload;
     private int mCurrentDownloadIndex;
@@ -271,6 +272,53 @@ public class MiniDroneActivity extends AppCompatActivity {
                 }
             }
         });
+
+        insanity = (Button) findViewById(R.id.insanity);
+        insanity.setOnClickListener(new View.OnClickListener() {
+                                       @Override
+                                       public void onClick(View view) {
+                                           try {
+                                               mMiniDrone.takeOff();
+                                               mMiniDrone.setPitch((byte)-100);
+                                               mMiniDrone.setFlag((byte) 1 );
+                                               Thread.sleep(500);
+                                               mMiniDrone.setPitch((byte)100);
+                                               mMiniDrone.setFlag((byte) 1 );
+                                               Thread.sleep(500);
+                                               mMiniDrone.setPitch((byte)100);
+                                               mMiniDrone.setFlag((byte) 1 );
+                                               Thread.sleep(500);
+                                               mMiniDrone.setPitch((byte)-100);
+                                               mMiniDrone.setFlag((byte) 1 );
+                                               Thread.sleep(500);
+                                               mMiniDrone.setYaw((byte)20);
+                                               Thread.sleep(500);
+                                               mMiniDrone.setRoll((byte)100);
+                                               Thread.sleep(100);
+                                               mMiniDrone.setRoll((byte)-100);
+                                               Thread.sleep(100);
+                                               mMiniDrone.setRoll((byte)100);
+                                               Thread.sleep(100);
+                                               mMiniDrone.setRoll((byte)-100);
+                                               Thread.sleep(100);
+                                               mMiniDrone.setRoll((byte)100);
+                                               Thread.sleep(100);
+                                               mMiniDrone.setRoll((byte)-100);
+                                               Thread.sleep(100);
+                                               mMiniDrone.setRoll((byte)100);
+                                               Thread.sleep(100);
+                                               mMiniDrone.setRoll((byte)-100);
+                                               Thread.sleep(100);
+                                               mMiniDrone.setRoll((byte)100);
+                                               Thread.sleep(100);
+                                               mMiniDrone.setRoll((byte)-100);
+                                               Thread.sleep(100);
+                                               mMiniDrone.land();
+                                           } catch (InterruptedException e) {
+                                               e.printStackTrace();
+                                           }
+                                       }
+                                   });
 
         circling_in_the_90s = (Button) findViewById(R.id.circling_in_the_90s);
         circling_in_the_90s.setOnClickListener(new View.OnClickListener() {
