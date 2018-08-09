@@ -315,12 +315,6 @@ public class MiniDroneActivity extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.takePictureBt).setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                mMiniDrone.takePicture();
-            }
-        });
-
 
 
         mBatteryLabel = (TextView) findViewById(R.id.batteryLabel);

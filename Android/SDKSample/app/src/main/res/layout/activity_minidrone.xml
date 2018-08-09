@@ -51,7 +51,7 @@
         android:text="gamble" />
 
     <Button
-        android:id="@+id/takeOffOrLandBtBt"
+        android:id="@+id/takeOffOrLandBt"
         android:layout_width="251dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
